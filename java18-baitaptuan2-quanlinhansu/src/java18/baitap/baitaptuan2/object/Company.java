@@ -59,17 +59,6 @@ public class Company {
 		this.listStaff = listStaff;
 	}
 
-	public void addStaff(Staff staff) {
-		if (this.listStaff != null && this.listStaff.contains(staff))
-			System.out.println("Exist staff");
-		else
-			this.listStaff.add(staff);
-	}
-
-	public void removeStaff(Staff staff) {
-		this.listStaff.remove(staff);
-	}
-
 	public List<Staff> getPresidents() {
 		return this.listStaff.stream().filter(st -> st.getStaffCode().contains("PD")).collect(Collectors.toList());
 	}
@@ -90,6 +79,22 @@ public class Company {
 			}
 		}
 		return null;
+	}
+	
+	public void addStaff(Staff staff) {
+		if (this.listStaff.contains(staff))
+			System.out.println("Exist staff");
+		else
+			this.listStaff.add(staff);
+	}
+
+	public void removeStaff(Staff staff) {
+		if (this.listStaff.contains(staff)) {
+			this.listStaff.remove(staff);
+		} else {
+			System.out.println("Staff does not exist");
+		}
+			
 	}
 
 }
