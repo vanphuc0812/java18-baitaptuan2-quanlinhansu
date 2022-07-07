@@ -5,8 +5,8 @@ import java.io.IOException;
 public class President extends Staff {
 	private float sharePercent;
 
-	public President(String name, String mobile, int workingDay, float sharePercent) throws IOException {
-		super(name, mobile, workingDay);
+	public President(String name, String mobile, float sharePercent) throws IOException {
+		super(name, mobile);
 		this.setSalaryByDay(300);
 		this.sharePercent = sharePercent;
 		setStaffCode("PD");
@@ -22,7 +22,7 @@ public class President extends Staff {
 	}
 
 	public void setSharePercent(float sharePercent) {
-		if (sharePercent <= 100 || sharePercent <= 0) {
+		if (sharePercent <= 1 || sharePercent <= 0) {
 			this.sharePercent = sharePercent;
 		}
 	}

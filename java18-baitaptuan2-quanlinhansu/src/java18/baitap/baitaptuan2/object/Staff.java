@@ -17,21 +17,25 @@ public abstract class Staff {
 		super();
 		if (!"".equals(name))
 			this.name = name;
-		else throw new IOException("Name can't be empty");
+		else
+			throw new IOException("Name can't be empty");
 		if (checkMobileNumberValid(mobile))
 			this.mobile = mobile;
-		else throw new IOException("Wrong mobile number format");
+		else
+			throw new IOException("Wrong mobile number format");
 		this.workingDay = workingDay;
 	}
 
 	public Staff(String name, String mobile) throws IOException {
 		super();
-		if (name.length()>1)
+		if (name.length() > 1)
 			this.name = name;
-		else throw new IOException("Name can't be empty");
+		else
+			throw new IOException("Name can't be empty");
 		if (checkMobileNumberValid(mobile))
 			this.mobile = mobile;
-		else throw new IOException("Wrong mobile number format");
+		else
+			throw new IOException("Wrong mobile number format");
 	}
 
 	public String getStaffCode() {
@@ -80,5 +84,15 @@ public abstract class Staff {
 
 	private boolean checkMobileNumberValid(String mobile) {
 		return mobile.matches("\\d+");
+	}
+
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(staffCode);
+		stringBuilder.append(": ");
+		stringBuilder.append(name);
+		stringBuilder.append(" - ");
+		stringBuilder.append(mobile);
+		return stringBuilder.toString();
 	}
 }

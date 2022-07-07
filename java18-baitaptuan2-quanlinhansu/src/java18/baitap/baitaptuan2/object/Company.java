@@ -80,7 +80,7 @@ public class Company {
 		}
 		return null;
 	}
-	
+
 	public void addStaff(Staff staff) {
 		if (this.listStaff.contains(staff))
 			System.out.println("Exist staff");
@@ -94,7 +94,14 @@ public class Company {
 		} else {
 			System.out.println("Staff does not exist");
 		}
-			
+	}
+
+	public long getTotalSalary() {
+		long totalSalary = 0;
+		for (Staff staff : listStaff) {
+			totalSalary += staff.getSalary();
+		}
+		return totalSalary;
 	}
 
 }
