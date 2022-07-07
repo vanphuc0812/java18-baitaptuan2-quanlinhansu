@@ -89,6 +89,12 @@ public class Program {
 				getPresidentTotalIncome(company);
 				break;
 			}
+			System.out.println("\n1. Exit           Others.Continue");
+			int endFlag = scanner.nextInt();
+			if (endFlag == 1)
+				break;
+			else
+				continue;
 		}
 	}
 
@@ -102,7 +108,7 @@ public class Program {
 			String taxCode = scanner.nextLine();
 			company.setTaxCode(taxCode);
 			System.out.println("Input company infomation successfully");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
@@ -121,10 +127,9 @@ public class Program {
 			System.out.println("Invalid staff id");
 		} else {
 			manager.addStaffToUnderControl(normalStaff);
-			StringBuilder stringBuilder = new StringBuilder();
-			
-			System.out.printf("Successfully assign %s to become leader of %s\n",normalStaff.getLeader().getName(),normalStaff.getName());
-			
+			System.out.printf("Successfully assign %s to become leader of %s\n", normalStaff.getLeader().getName(),
+					normalStaff.getName());
+
 		}
 	}
 
@@ -156,6 +161,7 @@ public class Program {
 	}
 
 	private static void removeStaff(Company company, Scanner scanner) {
+		scanner.nextLine();
 		System.out.print("Input staff id needed to remove: ");
 		String staffId = scanner.nextLine();
 		Staff staff = company.getStaffById(staffId);
@@ -164,6 +170,7 @@ public class Program {
 			if (staff.getClass() == Manager.class) {
 				((Manager) staff).removeAllStaffUnderControl();
 			}
+			System.out.printf("Staff %s has been removed\n", staffId);
 		} else {
 			System.out.println("Staff does not exist");
 		}
@@ -255,7 +262,7 @@ public class Program {
 				.collect(Collectors.toList());
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Total income of each president: \n");
-		for(int i = 0; i< listPresidents.size();i++) {
+		for (int i = 0; i < listPresidents.size(); i++) {
 			stringBuilder.append(listPresidents.get(i).toString());
 			stringBuilder.append(" : ");
 			stringBuilder.append(listTotalIncome.get(i));
