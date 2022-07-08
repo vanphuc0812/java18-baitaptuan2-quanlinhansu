@@ -14,21 +14,25 @@ import java18.baitap.baitaptuan2.object.President;
 import java18.baitap.baitaptuan2.object.SalaryComparator;
 import java18.baitap.baitaptuan2.object.Staff;
 
-public class Program {
+public class MainProgram {
 	public static void main(String[] args) throws IOException {
 
 		// Init
 		Company company = new Company();
-		President president = new President("Chu Quoc Khanh", "19251254", 0.2f);
-		Manager manager = new Manager("Pham Minh Tu", "1234", 22);
+		President president1 = new President("Chu Quoc Khanh", "19251254", 0.2f, 21);
+		President president2 = new President("Chu Quoc Vien", "192123554", 0.25f, 20);
+		Manager manager1 = new Manager("Pham Minh Tu", "1234", 22);
+		Manager manager2 = new Manager("Huynh Trung Bac", "1126234", 21);
 		NormalStaff normalStaff1 = new NormalStaff("Huynh Van Phuc", "0788996877", 21);
 		NormalStaff normalStaff2 = new NormalStaff("Chau Quang Vinh", "1111", 20);
 		NormalStaff normalStaff3 = new NormalStaff("Mai Xuan Son", "1111", 20);
 		company.addStaff(normalStaff3);
-		company.addStaff(president);
+		company.addStaff(president1);
+		company.addStaff(president2);
 		company.addStaff(normalStaff2);
 		company.addStaff(normalStaff1);
-		company.addStaff(manager);
+		company.addStaff(manager1);
+		company.addStaff(manager2);
 
 		Scanner scanner = new Scanner(System.in);
 		StringBuilder stringBuilder = new StringBuilder();
@@ -45,7 +49,7 @@ public class Program {
 		stringBuilder.append("11. Tính và Xuất tổng THU NHẬP của từng Giám Đốc\n");
 		while (true) {
 			System.out.print(stringBuilder);
-			int selection = scanner.nextInt();
+			int selection = Integer.parseInt(scanner.nextLine());
 			switch (selection) {
 			case 1:
 				setCompanyInfo(company, scanner);
@@ -55,11 +59,17 @@ public class Program {
 				break;
 			case 3:
 				System.out.println("1. Add staff           2. Remove staff");
-				int addOrRemove = scanner.nextInt();
-				if (addOrRemove == 1) {
+				int addOrRemove = Integer.parseInt(scanner.nextLine());
+				switch (addOrRemove) {
+				case 1:
 					addStaff(company, scanner);
-				} else {
+					break;
+				case 2:
 					removeStaff(company, scanner);
+					break;
+				default:
+					System.out.println("Selection invalid");
+					break;
 				}
 				break;
 			case 4:
@@ -86,11 +96,14 @@ public class Program {
 				getPresidentHasHighestSharePercent(company);
 				break;
 			case 11:
-				getPresidentTotalIncome(company);
+				getEachPresidentTotalIncome(company);
+				break;
+			default:
+				System.out.println("Invalid selection");
 				break;
 			}
 			System.out.println("\n1. Exit           Others.Continue");
-			int endFlag = scanner.nextInt();
+			int endFlag = Integer.parseInt(scanner.nextLine());
 			if (endFlag == 1)
 				break;
 			else
@@ -99,22 +112,34 @@ public class Program {
 	}
 
 	private static void setCompanyInfo(Company company, Scanner scanner) {
-		try {
-			scanner.nextLine();
+		System.out.println("Input which infomation you want to set to company:");
+		System.out.println("1. Company's name         2. Company's tax code            3. Company's revenue");
+		int selection = Integer.parseInt(scanner.nextLine());
+		switch (selection) {
+		case 1:
 			System.out.print("Input your company name: ");
 			String name = scanner.nextLine();
 			company.setName(name);
+			System.out.println("Input company name successfully");
+			break;
+		case 2:
 			System.out.print("Input your company tax code: ");
 			String taxCode = scanner.nextLine();
 			company.setTaxCode(taxCode);
-			System.out.println("Input company infomation successfully");
-		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Input company tax code successfully");
+			break;
+		case 3:
+			System.out.print("Input your company revenue: ");
+			Double revenue = Double.parseDouble(scanner.nextLine());
+			company.setRevenue(revenue);
+			System.out.println("Input company revenue successfully");
+			break;
+		default:
+			System.out.println("Invalid selection");
 		}
 	}
 
 	private static void assignLeader(Company company, Scanner scanner) {
-		scanner.nextLine();
 		System.out.print("Input manager staff code: ");
 		String managerId = scanner.nextLine();
 		System.out.print("Input normal staff code: ");
@@ -135,23 +160,28 @@ public class Program {
 
 	private static void addStaff(Company company, Scanner scanner) {
 		System.out.println("Input staff type: 1. President  2. Manager  3. Normal staff");
-		int staffType = scanner.nextInt();
-		scanner.nextLine();
+		int staffType = Integer.parseInt(scanner.nextLine());
 		System.out.print("Input staff name: ");
 		String staffName = scanner.nextLine();
-
 		System.out.print("Input staff mobile: ");
 		String staffMobile = scanner.nextLine();
+		System.out.print("Input staff working days:: ");
+		int workingDay = Integer.parseInt(scanner.nextLine());
 		try {
 			switch (staffType) {
 			case 1:
-				company.addStaff(new President(staffName, staffMobile));
+				System.out.print("Input president share percent: ");
+				float sharePercent = Float.parseFloat(scanner.nextLine());
+				company.addStaff(new President(staffName, staffMobile, sharePercent, workingDay));
 				break;
 			case 2:
-				company.addStaff(new Manager(staffName, staffMobile));
+				company.addStaff(new Manager(staffName, staffMobile, workingDay));
 				break;
 			case 3:
-				company.addStaff(new NormalStaff(staffName, staffMobile));
+				company.addStaff(new NormalStaff(staffName, staffMobile, workingDay));
+				break;
+			default:
+				System.out.println("Invalid selection");
 				break;
 			}
 			System.out.println("Add new staff successfully !");
@@ -161,7 +191,6 @@ public class Program {
 	}
 
 	private static void removeStaff(Company company, Scanner scanner) {
-		scanner.nextLine();
 		System.out.print("Input staff id needed to remove: ");
 		String staffId = scanner.nextLine();
 		Staff staff = company.getStaffById(staffId);
@@ -189,7 +218,7 @@ public class Program {
 			stringBuilder.append(maxNormalStaffSalary);
 			System.out.println(stringBuilder.toString());
 		} else {
-			System.out.println("Company's seem has no normal staff. Please add staff to company");
+			System.out.println("Company seem has no normal staff.");
 		}
 	}
 
@@ -208,7 +237,7 @@ public class Program {
 			stringBuilder.append(" staff\n");
 			System.out.println(stringBuilder.toString());
 		} else {
-			System.out.println("Company's seem has no manager.Please add staff to company");
+			System.out.println("Company seem has no manager.");
 		}
 	}
 
@@ -230,6 +259,8 @@ public class Program {
 		stringBuilder.append("The list staff after sorted by salary:\n");
 		company.getListStaff().forEach(staff -> {
 			stringBuilder.append(staff.toString());
+			stringBuilder.append(" : ");
+			stringBuilder.append(staff.getSalary());
 			stringBuilder.append("\n");
 		});
 		stringBuilder.append("\n");
@@ -251,24 +282,29 @@ public class Program {
 			stringBuilder.append("%\n");
 			System.out.println(stringBuilder.toString());
 		} else {
-			System.out.println("Company's seem has no president.Please add staff to company");
+			System.out.println("Company seem has no president.");
 		}
 	}
 
-	private static void getPresidentTotalIncome(Company company) {
+	private static void getEachPresidentTotalIncome(Company company) {
 		List<? extends Staff> listPresidents = company.getPresidents();
 		List<Double> listTotalIncome = listPresidents.stream().map(
 				president -> ((President) president).getSharePercent() * company.getRevenue() + president.getSalary())
 				.collect(Collectors.toList());
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("Total income of each president: \n");
-		for (int i = 0; i < listPresidents.size(); i++) {
-			stringBuilder.append(listPresidents.get(i).toString());
-			stringBuilder.append(" : ");
-			stringBuilder.append(listTotalIncome.get(i));
-			stringBuilder.append("\n");
+		if (listPresidents.size() > 0) {
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("Total income of each president: \n");
+			for (int i = 0; i < listPresidents.size(); i++) {
+				stringBuilder.append(listPresidents.get(i).toString());
+				stringBuilder.append(" : ");
+				stringBuilder.append(listTotalIncome.get(i));
+				stringBuilder.append("\n");
+			}
+			System.out.println(stringBuilder.toString());
+		} else {
+			System.out.println("Company seem has no president");
 		}
-		System.out.println(stringBuilder.toString());
+
 	}
 
 }
