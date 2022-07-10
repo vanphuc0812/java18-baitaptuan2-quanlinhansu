@@ -36,6 +36,11 @@ public class Manager extends Staff {
 		}
 	}
 
+	public void removeStaffUnderControl(Staff staff) {
+		this.underStaffList.remove(staff);
+		this.numOfUnderStaff--;
+	}
+
 	public void removeAllStaffUnderControl() {
 		this.underStaffList.forEach(staff -> staff.removeLeader());
 	}

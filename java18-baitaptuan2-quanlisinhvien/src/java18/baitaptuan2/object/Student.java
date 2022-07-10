@@ -21,12 +21,25 @@ public class Student {
 		this.id = "SV" + String.format("%3d", count++);
 	}
 
-	public Student(String name, float mathScore, float chemistryScore, float physicScore) {
+	public Student(String name, float mathScore, float chemistryScore, float physicScore) throws IOException {
 		this.name = name;
 		this.id = "SV" + String.format("%3d", count++);
-		this.mathScore = mathScore;
-		this.chemistryScore = chemistryScore;
-		this.physicScore = physicScore;
+
+		if (checkInvalidScore(mathScore)) {
+			this.mathScore = mathScore;
+		} else {
+			throw new IOException("Invalid input math score");
+		}
+		if (checkInvalidScore(chemistryScore)) {
+			this.chemistryScore = chemistryScore;
+		} else {
+			throw new IOException("Invalid input chemistry score");
+		}
+		if (checkInvalidScore(physicScore)) {
+			this.physicScore = physicScore;
+		} else {
+			throw new IOException("Invalid input physic score");
+		}
 	}
 
 	public String getName() {
@@ -46,10 +59,10 @@ public class Student {
 	}
 
 	public void setMathScore(float mathScore) throws IOException {
-		if (mathScore < 10 && mathScore > 0)
+		if (checkInvalidScore(mathScore))
 			this.mathScore = mathScore;
 		else
-			throw new IOException("Invalid input score");
+			throw new IOException("Invalid input math score");
 	}
 
 	public float getChemistryScore() {
@@ -57,10 +70,10 @@ public class Student {
 	}
 
 	public void setChemistryScore(float chemistryScore) throws IOException {
-		if (chemistryScore < 10 && chemistryScore > 0)
+		if (checkInvalidScore(chemistryScore))
 			this.chemistryScore = chemistryScore;
 		else
-			throw new IOException("Invalid input score");
+			throw new IOException("Invalid input chemistry score");
 	}
 
 	public float getPhysicScore() {
@@ -68,10 +81,10 @@ public class Student {
 	}
 
 	public void setPhysicScore(float physicScore) throws IOException {
-		if (physicScore < 10 && physicScore > 0)
+		if (checkInvalidScore(physicScore))
 			this.physicScore = physicScore;
 		else
-			throw new IOException("Invalid input score");
+			throw new IOException("Invalid input physic score");
 	}
 
 	public float getAverageScore() {
@@ -80,21 +93,28 @@ public class Student {
 	}
 
 	public String getRank() {
-		float averageScorre = getAverageScore();
-		if (averageScorre >= 9) {
+		averageScore = getAverageScore();
+		if (averageScore >= 9) {
 			this.rank = "Xuất sắc";
-		} else if (averageScorre >= 8) {
+		} else if (averageScore >= 8) {
 			this.rank = "Giỏi";
-		} else if (averageScorre >= 7) {
+		} else if (averageScore >= 7) {
 			this.rank = "Khá";
-		} else if (averageScorre >= 6) {
+		} else if (averageScore >= 6) {
 			this.rank = "Trung bình khá";
-		} else if (averageScorre >= 5) {
+		} else if (averageScore >= 5) {
 			this.rank = "Trung bình";
-		} else if (averageScorre > 0) {
+		} else if (averageScore > 0) {
 			this.rank = "Yếu";
 		} else
 			this.rank = "Unknown";
 		return this.rank;
+	}
+
+	private boolean checkInvalidScore(float score) {
+		if (score < 10 && score > 0)
+			return true;
+		else
+			return false;
 	}
 }

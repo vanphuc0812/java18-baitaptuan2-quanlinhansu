@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import java18.baitaptuan2.object.Student;
+import java18.baitaptuan2.object.StudentManager;
 
 public class MainProgram {
 	public static void main(String[] args) throws IOException {
@@ -17,12 +18,13 @@ public class MainProgram {
 		System.out.print("Input student's chemistry score: ");
 		float chemistryScore = Float.parseFloat(scanner.nextLine());
 
-		Student student = new Student(name);
-		student.setMathScore(mathScore);
-		student.setChemistryScore(chemistryScore);
-		student.setPhysicScore(physicScore);
-		
-		System.out.printf("The average score of %s: %f\n", student.getName(), student.getAverageScore());
-		System.out.printf("The rank of %s: %s\n", student.getName(), student.getRank());
+		StudentManager studentManager = StudentManager.getInstance();
+		int indexOfNewStudent = studentManager.addStudent(new Student(name, mathScore, chemistryScore, physicScore));
+
+		System.out.printf("The average score of %s: %f\n",
+				studentManager.getStudentByIndex(indexOfNewStudent).getName(),
+				studentManager.getStudentByIndex(indexOfNewStudent).getAverageScore());
+		System.out.printf("The rank of %s: %s\n", studentManager.getStudentByIndex(indexOfNewStudent).getName(),
+				studentManager.getStudentByIndex(indexOfNewStudent).getRank());
 	}
 }

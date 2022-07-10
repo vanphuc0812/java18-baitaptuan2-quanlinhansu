@@ -198,6 +198,11 @@ public class MainProgram {
 			company.removeStaff(staff);
 			if (staff.getClass() == Manager.class) {
 				((Manager) staff).removeAllStaffUnderControl();
+			} else if (staff.getClass() == NormalStaff.class) {
+				Manager manager = ((NormalStaff) staff).getLeader();
+				if (manager != null) {
+					manager.removeStaffUnderControl(staff);
+				}
 			}
 			System.out.printf("Staff %s has been removed\n", staffId);
 		} else {
@@ -276,7 +281,7 @@ public class MainProgram {
 					.filter(president -> ((President) president).getSharePercent() == highestSharePercent)
 					.collect(Collectors.toList());
 			StringBuilder stringBuilder = new StringBuilder();
-			presidentHasHigestSharePercent.forEach(staff -> stringBuilder.append(staff.toString()));
+			stringBuilder.append(presidentHasHigestSharePercent.get(0).toString());
 			stringBuilder.append(" has the highest share percent: ");
 			stringBuilder.append(highestSharePercent);
 			stringBuilder.append("%\n");
