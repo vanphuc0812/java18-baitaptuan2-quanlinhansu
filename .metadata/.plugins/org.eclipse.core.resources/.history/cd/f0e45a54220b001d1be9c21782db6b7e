@@ -1,0 +1,5 @@
+package cybersoft.javabackend.java18.model;
+
+public class Player {
+
+}

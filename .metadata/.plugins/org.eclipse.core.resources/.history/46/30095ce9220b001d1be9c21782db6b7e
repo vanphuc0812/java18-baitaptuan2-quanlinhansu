@@ -1,0 +1,7 @@
+package cybersoft.javabackend.java18.gamedoanso;
+
+public class Game {
+	public void start() {
+		
+	}
+}

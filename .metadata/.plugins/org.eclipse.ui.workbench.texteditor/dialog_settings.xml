@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="casesensitive" value="true"/>
+		<item key="wholeword" value="true"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="cNumber"/>
+		<list key="findhistory">
+			<item value="soC"/>
+			<item value="The equation with 2 solutions is:"/>
+		</list>
+		<list key="replacehistory">
+			<item value="cNumber"/>
+			<item value="soC"/>
+		</list>
+	</section>
+</section>

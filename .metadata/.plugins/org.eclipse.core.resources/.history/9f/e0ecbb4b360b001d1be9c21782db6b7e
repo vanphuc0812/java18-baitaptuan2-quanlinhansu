@@ -1,0 +1,11 @@
+package cybersoft.javabackend.java18.gamedoanso.servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(name = "authServlet", urlPatterns = {
+		"/dangky",
+		"/dangnhap"
+})
+public class AuthServlet {
+	
+}

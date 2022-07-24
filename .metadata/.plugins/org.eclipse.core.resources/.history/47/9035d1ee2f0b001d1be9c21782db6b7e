@@ -1,0 +1,31 @@
+package cybersoft.javabackend.java18.gamedoanso.model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class ManChoi {
+	private List<LanDoan> lanDoan;
+	private LocalDateTime startTime;
+	private LocalDateTime endTime;
+	private int soNgauNhien;
+	private String nguoiChoi;
+	private boolean hoanThanh;
+	private String id;
+	private static int soId;
+	private static Random random = null;
+	
+	
+	public ManChoi(String nguoiChoi) {
+		this.id = "GAME" + String.format("%05d", soId++);
+		lanDoan = new ArrayList<>();
+	}
+	
+	private int getRandomInt() {
+		if(random == null) {
+			random = new Random();
+		}
+		return random.nextInt(1000-1) + 1;
+	}
+}

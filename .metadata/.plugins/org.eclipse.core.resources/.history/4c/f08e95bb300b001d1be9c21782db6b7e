@@ -1,0 +1,13 @@
+package cybersoft.javabackend.java18.gamedoanso.store;
+
+import java.util.List;
+
+import cybersoft.javabackend.java18.gamedoanso.model.LanDoan;
+import cybersoft.javabackend.java18.gamedoanso.model.ManChoi;
+import cybersoft.javabackend.java18.gamedoanso.model.Player;
+
+public class GameStore {
+	private List<Player> dsNguoiChoi;
+	private List<ManChoi> dsManChoi;
+	private List<LanDoan> dsLanDoan;
+}

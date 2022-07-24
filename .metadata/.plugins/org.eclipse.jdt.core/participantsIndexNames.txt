@@ -1,0 +1,15 @@
+INDEX VERSION 1.131
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\912123887.index
+\java18-servlet\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4251355596.index
+\java18-servlet\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1709443815.index
+\java18-game-doan-so\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\713478940.index
+\java18-game-doan-so\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1159005548.index
+\java18-servlet\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4050866889.index
+\java18-game-doan-so\src\main\java
+D:\21_Java\EclipeEE_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2033974896.index
+\java18-servlet\src\main\java

@@ -1,0 +1,8 @@
+package cybersoft.javabackend.java18.gamedoanso.model;
+
+public class Player {
+	private String userName;
+	private String passWord;
+	private ManChoi manChoi;
+	
+}

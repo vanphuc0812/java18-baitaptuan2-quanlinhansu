@@ -1,0 +1,16 @@
+package cybersoft.javabackend.java18.gamedoanso.servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+import cybersoft.javabackend.java18.gamedoanso.Utils.UrlUtils;
+
+@WebServlet(name = "authServlet", urlPatterns = {
+		UrlUtils.DANG_KY,
+		UrlUtils.DANG_NHAP
+})
+public class AuthServlet {
+	private void doGet() {
+		// TODO Auto-generated method stub
+
+	}
+}

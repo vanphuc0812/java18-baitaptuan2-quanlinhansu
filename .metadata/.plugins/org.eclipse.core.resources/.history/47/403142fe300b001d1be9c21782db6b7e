@@ -1,0 +1,9 @@
+package cybersoft.javabackend.java18.gamedoanso.store;
+
+public class GameStoreHolder {
+	private  GameStore store;
+	
+	public static GameStore getStore() {
+		return store;
+	}
+}

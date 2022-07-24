@@ -1,0 +1,8 @@
+package cybersoft.javabackend.java18.gamedoanso;
+
+public class GameTest {
+	@Test
+	public void shouldStartedSuccessfully() {
+		
+	}
+}

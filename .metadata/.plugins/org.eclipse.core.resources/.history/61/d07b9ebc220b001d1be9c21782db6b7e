@@ -1,0 +1,20 @@
+package cybersoft.javabackend.java18.gamedoanso;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+public class GameTest {
+	private Game game;
+	
+	@BeforeAll
+	public void setupTest() {
+		game = new Game();
+	}
+	
+	@Test
+	public void shouldStartedSuccessfully() {
+		assertDoesNotThrow(()-> game.start());
+	}
+}

@@ -1,0 +1,11 @@
+package cybersoft.javabackend.java18.gamedoanso.servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(name = "gameServlet", urlPatterns = {
+		"/game",
+		"/xep-hang"
+})
+public class GameServlet {
+
+}

@@ -1,0 +1,5 @@
+package cybersoft.javabackend.java18.gamedoanso.model;
+
+public class ManChoi {
+	private int soDoan;
+}

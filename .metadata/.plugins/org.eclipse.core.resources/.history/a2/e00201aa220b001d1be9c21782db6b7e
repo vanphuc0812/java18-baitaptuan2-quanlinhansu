@@ -1,0 +1,18 @@
+package cybersoft.javabackend.java18.gamedoanso;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+public class GameTest {
+	private Game game;
+	
+	@BeforeAll
+	public void setupTest() {
+		game = new Game();
+	}
+	
+	@Test
+	public void shouldStartedSuccessfully() {
+		
+	}
+}

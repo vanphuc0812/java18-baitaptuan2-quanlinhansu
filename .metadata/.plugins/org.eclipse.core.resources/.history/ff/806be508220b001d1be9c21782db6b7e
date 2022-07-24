@@ -1,0 +1,10 @@
+package cybersoft.javabackend.java18.gamedoanso;
+
+import org.junit.jupiter.api.Test;
+
+public class GameTest {
+	@Test
+	public void shouldStartedSuccessfully() {
+		
+	}
+}
